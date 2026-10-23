@@ -1,0 +1,32 @@
+name: Suggestion
+description: "An idea for a new module, feature or improvement."
+title: "[Suggestion] "
+labels: ["type:suggestion"]
+body:
+  - type: dropdown
+    id: course
+    attributes:
+      label: Course
+      options:
+        - Mechanics Lab (Physics 1 / AP Physics C: Mechanics)
+        - E&M Lab (AP Physics C: E&M)
+        - Chemistry Lab (AP Chemistry)
+        - Landing page
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: module
+    attributes:
+      label: Module or page
+      placeholder: "e.g. Projectile motion (#projectile)"
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+      description: "What would help you study, and why?"
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: "Issues here are public. Please don't include personal information."

@@ -1,0 +1,42 @@
+name: Bug
+description: "Something is broken: a simulation, button, layout or progress."
+title: "[Bug] "
+labels: ["type:bug"]
+body:
+  - type: dropdown
+    id: course
+    attributes:
+      label: Course
+      options:
+        - Mechanics Lab (Physics 1 / AP Physics C: Mechanics)
+        - E&M Lab (AP Physics C: E&M)
+        - Chemistry Lab (AP Chemistry)
+        - Landing page
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: module
+    attributes:
+      label: Module or page
+      placeholder: "e.g. Projectile motion (#projectile)"
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: "What you did, what you expected and what happened instead."
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Browser and device
+      placeholder: "e.g. Safari on iPhone 15, Chrome on Windows"
+  - type: input
+    id: version
+    attributes:
+      label: Site version (optional)
+      description: "Shown in the pre-filled issue from the site."
+  - type: markdown
+    attributes:
+      value: "Issues here are public. Please don't include personal information."

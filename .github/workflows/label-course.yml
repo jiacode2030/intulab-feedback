@@ -1,0 +1,21 @@
+# Adds a course:* label from the "Course" dropdown (or the "**Course:** ..." line that the sites pre-fill).
+name: Label by course
+on:
+  issues:
+    types: [opened, edited]
+permissions:
+  issues: write
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue.body || '';
+            const map = [[/Mechanics/i, 'course:mechanics'], [/E&M|Electricity/i, 'course:em'],
+                         [/Chemistry/i, 'course:chem'], [/Landing page/i, 'course:landing']];
+            const m = body.match(/###\s*Course\s*\n+([^\n]+)/) || body.match(/\*\*Course:\*\*\s*([^\n]+)/);
+            if (!m) return;
+            const hit = map.find(([re]) => re.test(m[1]));
+            if (hit) await github.rest.issues.addLabels({ ...context.repo, issue_number: context.issue.number, labels: [hit[1]] });

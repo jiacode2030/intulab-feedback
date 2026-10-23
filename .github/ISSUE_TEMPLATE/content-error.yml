@@ -1,0 +1,37 @@
+name: Content error
+description: "A wrong answer, formula, explanation or diagram."
+title: "[Content error] "
+labels: ["type:content"]
+body:
+  - type: dropdown
+    id: course
+    attributes:
+      label: Course
+      options:
+        - Mechanics Lab (Physics 1 / AP Physics C: Mechanics)
+        - E&M Lab (AP Physics C: E&M)
+        - Chemistry Lab (AP Chemistry)
+        - Landing page
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: module
+    attributes:
+      label: Module or page
+      placeholder: "e.g. Projectile motion (#projectile)"
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong?
+      description: "Quote the text or describe the problem. If you know the right version, add it."
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source (optional)
+      description: "A textbook page, AP course description section or link that backs up the correction."
+  - type: markdown
+    attributes:
+      value: "Issues here are public. Please don't include personal information."
