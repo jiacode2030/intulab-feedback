@@ -13,8 +13,9 @@ jobs:
         with:
           script: |
             const body = context.payload.issue.body || '';
+            // Precalculus is listed before Calculus: /Calculus/ would also match "Precalculus".
             const map = [[/Mechanics/i, 'course:mechanics'], [/E&M|Electricity/i, 'course:em'],
-                         [/Chemistry/i, 'course:chem'], [/Calculus/i, 'course:calc'], [/Biology/i, 'course:bio'],
+                         [/Chemistry/i, 'course:chem'], [/Precalculus/i, 'course:precalc'], [/Calculus/i, 'course:calc'], [/Biology/i, 'course:bio'],
                          [/Landing page/i, 'course:landing']];
             const m = body.match(/###\s*Course\s*\n+([^\n]+)/) || body.match(/\*\*Course:\*\*\s*([^\n]+)/);
             if (!m) return;
