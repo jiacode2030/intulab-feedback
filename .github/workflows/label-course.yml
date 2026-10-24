@@ -14,7 +14,8 @@ jobs:
           script: |
             const body = context.payload.issue.body || '';
             const map = [[/Mechanics/i, 'course:mechanics'], [/E&M|Electricity/i, 'course:em'],
-                         [/Chemistry/i, 'course:chem'], [/Calculus/i, 'course:calc'], [/Landing page/i, 'course:landing']];
+                         [/Chemistry/i, 'course:chem'], [/Calculus/i, 'course:calc'], [/Biology/i, 'course:bio'],
+                         [/Landing page/i, 'course:landing']];
             const m = body.match(/###\s*Course\s*\n+([^\n]+)/) || body.match(/\*\*Course:\*\*\s*([^\n]+)/);
             if (!m) return;
             const hit = map.find(([re]) => re.test(m[1]));
